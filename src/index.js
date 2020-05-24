@@ -18,5 +18,5 @@ app.post('/image-upload', (req, res) => {
       .then(results => res.json(results))
   })
 
-app.listen(3333); //manda a aplicação ouvir a porta 3333 -> localhost:3333
+app.listen(process.env.PORT || 3333); //manda a aplicação ouvir a porta 3333 -> localhost:3333
 //para rodar a aplicação basta rodar "npm start" no terminal na pasta backend
