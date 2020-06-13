@@ -7,9 +7,8 @@ exports.up = function(knex) {
     table.decimal('weight').notNullable();
     table.bool('gender').notNullable();
     table.bool('castrated').notNullable();
-    table.string('specie').nullable();
-    table.string('disease').nullable();
-    table.blob('photo').nullable();
+    table.string('disease').notNullable();
+    table.string('photo_link').nullable();
     table.string('user_id').notNullable();
 
     table.foreign('user_id').references('id').inTable('user');
