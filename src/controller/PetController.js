@@ -18,7 +18,7 @@ module.exports = {
     },
 
     async create(request, response){
-        const { name, age, weight, gender, castrated, disease, photo_link } = request.body;
+        const { name, age, weight, gender, castrated, specie, disease, photo } = request.body;
         const user_id = request.headers.authorization;
 
         const [id] = await connection('pets').insert({
@@ -27,16 +27,17 @@ module.exports = {
             weight,
             gender,
             castrated,
+            specie,
             disease,
             user_id,
-            photo_link
+            photo
         });
 
         return response.json({ id });
     },
 
     async edit(request, response){
-        const {id, name, age, weight, gender, castrated, disease, photo_link} = request.body;
+        const {id, name, age, weight, gender, castrated, specie, disease, photo} = request.body;
         const user_id = request.headers.authorization;
 
         // const pets = await connection('pets')
@@ -54,8 +55,9 @@ module.exports = {
             'weight': weight,
             'gender': gender,
             'castrated': castrated,
+            'specie': specie,
             'disease': disease,
-            'photo_link': photo_link,
+            'photo': photo,
         });
 
         return response.status(204).send();
